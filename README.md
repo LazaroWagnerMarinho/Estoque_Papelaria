@@ -15,6 +15,8 @@ To see your applications health enter url `http://localhost:8081/healthcheck`
 ### Configuração do Banco MySql:
 
     #Criar Banco:
+        Abre MySql e executa o comando abaixo parar Banco:    
+        CREATE SCHEMA `estoque_papelaria` ;
 
     Nome de Schema: estoque_papelaria;
     login: root;
