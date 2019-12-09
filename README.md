@@ -22,6 +22,8 @@ To see your applications health enter url `http://localhost:8081/healthcheck`
 
 ### Build:
 
+    Pelo Terminal executa os passo abaixo.
+
 	mvn clean package
 
 
@@ -35,6 +37,6 @@ To see your applications health enter url `http://localhost:8081/healthcheck`
 	java -jar target/estoque.Produto-1.0.0.jar server config.yml
 
 
-### Open browser pointing at
+### Abrir pelo browser seguindo o link abaixo
 
 	http://localhost:8080/papelaria
