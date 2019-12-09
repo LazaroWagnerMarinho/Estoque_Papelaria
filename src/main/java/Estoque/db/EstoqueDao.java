@@ -21,8 +21,9 @@ public interface EstoqueDao {
 
 
 
-    @SqlUpdate("update estoque set codBarra = :estoque.codBarra where id = 5")
-    void updateProduto(@Bind("id") int id, @BindBean Estoque estoque);
+    @SqlUpdate("update estoque set codBarra = :estoque.codBarra, nomeProduto = :estoque.nomeProduto," +
+                " descricao = :estoque.descricao, quantidade = :estoque.quantidade, categoria = :estoque.categoria where id = :id")
+    void updateProduto(@Bind("id") int id, @BindBean("estoque") Estoque estoque);
 
 
     @SqlQuery("SELECT * FROM estoque WHERE id = :id")

@@ -20,8 +20,10 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
            };
 
            $scope.confimarAlteracaoDoProduto = function(id,produtos){
-                produtosAPI.alterarProduto(id,produtos).success(function(data){
+            var produto = preencherInfor();
+                produtosAPI.alterarProduto(id,produto).success(function(data){
                     $scope.message = "Produto Alterado com sucesso!";
+                    carregarProdutos();
                 }).error(function (data,status) {
                   $scope.message = "Nao foi possivel Cadastar o Produto!</p>" + data
               });
@@ -50,9 +52,24 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
                document.querySelector("from, #quantidade ").value = produtos.quantidade;
                document.querySelector("from, #categoria  ").value = produtos.categoria;
                $scope.exibirSalvar = false;
-
            };
 
+            var preencherInfor = function(){
+               codBarra = document.querySelector("from, #codBarra   ").value,
+               nomeProduto = document.querySelector("from, #nomeProduto").value,
+               descricao = document.querySelector("from, #descricao  ").value,
+               quantidade = document.querySelector("from, #quantidade ").value,
+               categoria = document.querySelector("from, #categoria  ").value,
+
+            produtos={
+                codBarra : codBarra,
+                nomeProduto: nomeProduto,
+                descricao: descricao,
+                quantidade: quantidade,
+                categoria: categoria
+            }
+                return produtos;
+            }
 
 
         carregarProdutos()

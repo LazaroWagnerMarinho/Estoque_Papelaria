@@ -37,11 +37,11 @@
       </table>
     <hr/>
     <form name="produtoForm">
-            <input id="codBarra" class="form-control codBarra" type="text" ng-model="produto.codBarra"     name="codBarra" placeholder="Codigo De Barra" ng-required="true"/>
-            <input id="nomeProduto" class="form-control nomeProduto" type="text" ng-model="produto.nomeProduto"  name="nomeProduto" placeholder="Nome do Produto" ng-required="true"/>
-            <input id="descricao" class="form-control descricao" type="text" ng-model="produto.descricao"    name="descricao" placeholder="Descrição"ng-required="true"/>
-            <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="true"/>
-            <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="true"/>
+            <input id="codBarra" class="form-control codBarra" type="text" ng-model="produto.codBarra"     name="codBarra" placeholder="Codigo De Barra" ng-required="false"/>
+            <input id="nomeProduto" class="form-control nomeProduto" type="text" ng-model="produto.nomeProduto"  name="nomeProduto" placeholder="Nome do Produto" ng-required="false"/>
+            <input id="descricao" class="form-control descricao" type="text" ng-model="produto.descricao"    name="descricao" placeholder="Descrição"ng-required="false"/>
+            <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="false"/>
+            <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="false"/>
     </form>
      <button ng-show="exibirSalvar" class="btn btn-primary btn-block" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
      <button ng-show="!exibirSalvar" class="btn btn-primary btn-block" ng-click="confimarAlteracaoDoProduto(produtoId, produto)">Alterar Produto</button>
