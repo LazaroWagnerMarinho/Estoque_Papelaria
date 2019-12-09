@@ -1,0 +1,9 @@
+Estoque\core\Estoque.class
+Estoque\EstoqueProdutoConfiguration.class
+Estoque\db\EstoqueMapper.class
+Estoque\db\EstoqueDao.class
+Estoque\EstoqueProdutoApplication$1.class
+Estoque\health\DatabaseHealthCheck.class
+Estoque\resources\HtmlPageResource.class
+Estoque\resources\EstoqueResource.class
+Estoque\EstoqueProdutoApplication.class

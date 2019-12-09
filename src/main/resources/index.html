@@ -1,0 +1,51 @@
+<html ng-app="estoquePapelaria">
+        
+<head>
+    <meta charset="UTF-8">
+    <title>Estoque De Papelaria</title>
+    <link rel="stylesheet" type="text/css" href="assets/lib/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/estoqueStyle.css"/>
+    <script src="assets/lib/angularJs/angular.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/controllers/estoquePapelariaCtrl.js"></script>
+    <script src="assets/js/services/produtosAPIService.js"></script>
+</head>
+<body ng-controller="estoquePapelariaCtrl">
+    <div class="jumbotron">
+      <h3>{{app}}</h3>
+      <input class="form-control" type="text" ng-model="criterioDeBusca1" placeholder="O que deseja buscar?"/>
+      <table ng-show="produtos.length > 0" class="table table-striped">
+          <tr>
+              <th><a href="" ng-click="ordenarPor('codBarra')"> Codigo de Barra</a></th>
+              <th><a href="" ng-click="ordenarPor('nomeProduto')">Nome do Produto</a></th>
+              <th><a href="" ng-click="ordenarPor('descricao')"> Descrição</a></th>
+              <th><a href="" ng-click="ordenarPor('quantidade')"> Quantidade</a></th>
+              <th><a href="" ng-click="ordenarPor('categoria')"> Categoria</a></th>
+              <th>Alterar</th>
+              <th>Deletar</th>
+          </tr>
+          <tr ng-repeat="produto in produtos | filter:criterioDeBusca1 | orderBy:ordenacao:direcaoDaOrdenacao">
+                <td>{{produto.codBarra}}</td>
+                <td>{{produto.nomeProduto}}</td>
+                <td>{{produto.descricao}}</td>
+                <td>{{produto.quantidade}}</td>
+                <td>{{produto.categoria}}</td>
+                <td><button class="btn btn-primary" ng-click="alterarProduto(produto)">Alterar</button></td>
+                <td><button class="btn btn-danger" ng-click="deletarProdutos(produto.id)">X</button></td>
+          </tr>
+      </table>
+    <hr/>
+    <form name="produtoForm">
+            <input id="codBarra" class="form-control codBarra" type="text" ng-model="produto.codBarra"     name="codBarra" placeholder="Codigo De Barra" ng-required="true"/>
+            <input id="nomeProduto" class="form-control nomeProduto" type="text" ng-model="produto.nomeProduto"  name="nomeProduto" placeholder="Nome do Produto" ng-required="true"/>
+            <input id="descricao" class="form-control descricao" type="text" ng-model="produto.descricao"    name="descricao" placeholder="Descrição"ng-required="true"/>
+            <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="true"/>
+            <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="true"/>
+    </form>
+     <button id="botaoGen" class="btn btn-primary btn-block" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
+
+    </div>
+    <div ng-include="'assets/view/footer.html'"></div>
+
+</body>
+</html>

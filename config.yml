@@ -1,0 +1,11 @@
+logging:
+  level: INFO
+  loggers:
+    estoque.Produto: DEBUG
+
+database:
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: 123456
+  url: jdbc:mysql://localhost:3306/estoque_papelaria
+  validationQuery: "SELECT 1"
