@@ -13,7 +13,7 @@
 <body ng-controller="estoquePapelariaCtrl">
     <div class="jumbotron">
       <h3>{{app}}</h3>
-      {{message}}
+        <h4>{{message}}</h4>
       <input class="form-control" ng-show="produtos.length > 0" type="text" ng-model="criterioDeBusca1" placeholder="O que deseja buscar?"/>
       <table ng-show="produtos.length > 0" class="table table-striped">
           <tr>
@@ -43,8 +43,8 @@
             <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="false"/>
             <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="false"/>
     </form>
-     <button ng-show="exibirSalvar" class="btn btn-primary btn-block" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
-     <button ng-show="!exibirSalvar" class="btn btn-primary btn-block" ng-click="confimarAlteracaoDoProduto(produtoId, produto)">Alterar Produto</button>
+     <button ng-show="exibirBtnSalvar" class="btn btn-primary btn-block" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
+     <button ng-show="!exibirBtnSalvar" class="btn btn-primary btn-block" ng-click="confimarAlteracaoDoProduto(produtoId, produto)">Alterar Produto</button>
 
     </div>
     <div ng-include="'assets/view/footer.html'"></div>

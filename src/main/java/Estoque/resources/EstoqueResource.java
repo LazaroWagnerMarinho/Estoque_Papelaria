@@ -34,12 +34,12 @@ public class EstoqueResource {
         estoqueDao.addProduto(newEstoque);
     }
 
-    @Path("alterar/{id}")
+    @Path("alterar")
     @PUT
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public void updateEsotque(@PathParam("id") int id, Estoque newestoque){
-        estoqueDao.updateProduto(id, newestoque);
+    public void updateEsotque(Estoque newEstoque){
+        estoqueDao.updateProduto(newEstoque);
 //        getEstoques();
     }
 

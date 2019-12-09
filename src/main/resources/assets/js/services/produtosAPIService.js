@@ -8,8 +8,8 @@ angular.module("estoquePapelaria").factory("produtosAPI", function($http){
         return $http.post("/estoque/cadastrar", produto);
     }
 
-    var _alterProdutos = function(id, produtos){
-        return $http.put("estoque/alterar/"+id,produtos);
+    var _alterProdutos = function(produtos){
+        return $http.put("estoque/alterar/",produtos);
     };
 
     var _deleteProdutos = function(id){
