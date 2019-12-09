@@ -34,15 +34,19 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
               });
            }
 
-            $scope.deletarProdutos = function(id){
-               produtosAPI.deletaProduto(id).success(function(data){
-                    $scope.message = "Produto deletado com Sucesso";
-                    $scope.produtoForm.$setPristine();
-                    carregarProdutos();
-               carregarProdutos();
-               }).error(function (data,status) {
-                   $scope.message = "Não foi possivel deletar o produto!</p>" + data
-               });
+            $scope.deletarProdutos = function(id, nomeProduto){
+                var resposta = confirm("Deseja excluir esse Produto " + nomeProduto +" ?");
+                if(resposta == true){
+
+                   produtosAPI.deletaProduto(id).success(function(data){
+                        $scope.message = "Produto deletado com Sucesso";
+                        $scope.produtoForm.$setPristine();
+                        carregarProdutos();
+                   carregarProdutos();
+                   }).error(function (data,status) {
+                       $scope.message = "Não foi possivel deletar o produto!</p>" + data
+                   });
+               }
             };
 
            $scope.ordenarPor = function(campo){
@@ -84,6 +88,15 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
                 document.querySelector("from, #descricao  ").value ="";
                 document.querySelector("from, #quantidade ").value ="";
                 document.querySelector("from, #categoria  ").value ="";
+            }
+
+            $scope.cancelarEditar = function(){
+                var resposta = confirm("Deseja cancelar edição?");
+                if(resposta == true){
+                    $scope.exibirBtnSalvar = true;
+                                    carregarProdutos();
+                }
+                return null;
             }
 
         carregarProdutos()

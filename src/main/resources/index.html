@@ -31,8 +31,8 @@
                 <td>{{produto.descricao}}</td>
                 <td>{{produto.quantidade}}</td>
                 <td>{{produto.categoria}}</td>
-                <td><button class="btn btn-primary" ng-click="alterarProduto(produto)">Alterar</button></td>
-                <td><button class="btn btn-danger" ng-click="deletarProdutos(produto.id)">X</button></td>
+                <td><button class="btn btn-primary" ng-click="alterarProduto(produto)">Editar</button></td>
+                <td><button class="btn btn-danger" ng-click="deletarProdutos(produto.id, produto.nomeProduto)">X</button></td>
           </tr>
       </table>
     <hr/>
@@ -43,8 +43,9 @@
             <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="false"/>
             <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="false"/>
     </form>
-     <button ng-show="exibirBtnSalvar" class="btn btn-primary btn-block" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
-     <button ng-show="!exibirBtnSalvar" class="btn btn-primary btn-block" ng-click="confimarAlteracaoDoProduto(produtoId, produto)">Alterar Produto</button>
+     <button ng-show="exibirBtnSalvar" class="btn btn-primary" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
+     <button ng-show="!exibirBtnSalvar" class="btn btn-primary" ng-click="confimarAlteracaoDoProduto(produtoId, produto)">Editar Produto</button>
+     <button ng-show="!exibirBtnSalvar" class="btn btn-danger" ng-click="cancelarEditar()">Cancelar</button>
 
     </div>
     <div ng-include="'assets/view/footer.html'"></div>
