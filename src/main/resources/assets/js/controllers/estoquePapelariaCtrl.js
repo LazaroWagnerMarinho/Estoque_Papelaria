@@ -1,12 +1,14 @@
 app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attrs){
            $scope.app = "Lista De Produtos";
+           $scope.cadastro = "Cadastrar Novo Produto";
            $scope.produtos =[];
-           $scope.exibirBtnSalvar = true;
+//           $scope.exibirBtnSalvar = true;
 
            var carregarProdutos = function(){
                 limparTodosCampos();
                 produtosAPI.getProduto().success(function(data, status){
                    $scope.produtos= data;
+                   $scope.exibirBtnSalvar = true;
                 }).error(function (data,status) {
                     $scope.message = "Nao foi possivel Cadastar o Produto!</p>" + data;
                 });
@@ -14,7 +16,7 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
 
            $scope.adicionarProdutos = function(produto){
                produtosAPI.postProduto(produto).success(function(data){
-                    $scope.message = "Produto cadastrado com Sucesso!"
+                    alert("Produto cadastrado com Sucesso!");
                     $scope.produtoForm.$setPristine();
                     carregarProdutos();
                }).error(function (data){
@@ -26,7 +28,7 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
            $scope.confimarAlteracaoDoProduto = function(id){
             var produto = preencherInfor(id);
                 produtosAPI.alterarProduto(produto).success(function(data){
-                    $scope.message = "Produto Alterado com sucesso!";
+                    alert("Produto Alterado com sucesso!");
                     $scope.produtoForm.$setPristine();
                     carregarProdutos();
                 }).error(function (data,status) {
@@ -35,11 +37,11 @@ app.controller("estoquePapelariaCtrl", function($scope, $http, produtosAPI,$attr
            }
 
             $scope.deletarProdutos = function(id, nomeProduto){
-                var resposta = confirm("Deseja excluir esse Produto " + nomeProduto +" ?");
+                var resposta = confirm("Deseja excluir esse Produto "+ nomeProduto +" ?");
                 if(resposta == true){
 
                    produtosAPI.deletaProduto(id).success(function(data){
-                        $scope.message = "Produto deletado com Sucesso";
+                        alert("Produto excluido com Sucesso");
                         $scope.produtoForm.$setPristine();
                         carregarProdutos();
                    carregarProdutos();

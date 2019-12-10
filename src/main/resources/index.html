@@ -12,7 +12,7 @@
 </head>
 <body ng-controller="estoquePapelariaCtrl">
     <div class="jumbotron">
-      <h3>{{app}}</h3>
+      <h3 ng-show="produtos.length > 0">{{app}}</h3>
         <h4>{{message}}</h4>
       <input class="form-control" ng-show="produtos.length > 0" type="text" ng-model="criterioDeBusca1" placeholder="O que deseja buscar?"/>
       <table ng-show="produtos.length > 0" class="table table-striped">
@@ -36,15 +36,16 @@
           </tr>
       </table>
     <hr/>
+        <h5>{{cadastro}}</h5>
     <form name="produtoForm">
-            <input id="codBarra" class="form-control codBarra" type="text" ng-model="produto.codBarra"     name="codBarra" placeholder="Codigo De Barra" ng-required="false"/>
-            <input id="nomeProduto" class="form-control nomeProduto" type="text" ng-model="produto.nomeProduto"  name="nomeProduto" placeholder="Nome do Produto" ng-required="false"/>
-            <input id="descricao" class="form-control descricao" type="text" ng-model="produto.descricao"    name="descricao" placeholder="Descrição"ng-required="false"/>
-            <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="false"/>
-            <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="false"/>
+            <input id="codBarra" class="form-control codBarra" type="text" ng-model="produto.codBarra"     name="codBarra" placeholder="Codigo De Barra" ng-required="true"/>
+            <input id="nomeProduto" class="form-control nomeProduto" type="text" ng-model="produto.nomeProduto"  name="nomeProduto" placeholder="Nome do Produto" ng-required="true"/>
+            <input id="descricao" class="form-control descricao" type="text" ng-model="produto.descricao"    name="descricao" placeholder="Descrição"ng-required="true"/>
+            <input id="quantidade" class="form-control quantidade " type="number" ng-model="produto.quantidade" name="quantidade" placeholder="Quantidade"ng-required="true"/>
+            <input id="categoria" class="form-control categoria" type="text" ng-model="produto.categoria"    name="categoria" placeholder="Categoria"ng-required="true"/>
     </form>
      <button ng-show="exibirBtnSalvar" class="btn btn-primary" ng-click="adicionarProdutos(produto)" ng-disabled="produtoForm.$invalid">Adicionar Produto</button>
-     <button ng-show="!exibirBtnSalvar" class="btn btn-primary" ng-click="confimarAlteracaoDoProduto(produtoId, produto)">Editar Produto</button>
+     <button ng-show="!exibirBtnSalvar" class="btn btn-primary" ng-click="confimarAlteracaoDoProduto(produtoId, produto)" >Editar Produto</button>
      <button ng-show="!exibirBtnSalvar" class="btn btn-danger" ng-click="cancelarEditar()">Cancelar</button>
 
     </div>
